@@ -24,6 +24,8 @@
     <string name="txtFacebook">Facebook</string>
     <string name="txtGplus">Google+</string>
     <string name="hint_user">Usuário</string>
-    <string name="txtIrParaOMapa">Informar endereço </string>
+    <string name="txtIrParaOMapa">Ir para o mapa</string>
     <string name="title_activity_achou_maps">Map</string>
+    <string name="Hint_txtTextDeixarDoc">Descreva onde deixará o documento</string>
+    <string name="hint_NumDoc">Número do documento</string>
 </resources>

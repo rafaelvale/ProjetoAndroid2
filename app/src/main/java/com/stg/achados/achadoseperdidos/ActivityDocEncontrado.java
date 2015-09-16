@@ -31,7 +31,6 @@ public class ActivityDocEncontrado extends Activity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adapter.add("Selecione o documento");
-        adapter.add("CARTÃO DE DÉBITO/CRÉDITO");
         adapter.add("CARTÃO DO CIDADÃO");
         adapter.add("CARTÃO NACIONAL DE SAÚDE");
         adapter.add("CARTEIRA DO IDOSO");
@@ -55,6 +54,11 @@ public class ActivityDocEncontrado extends Activity {
         spinner.setAdapter(adapter);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+    }
+
+    public void ConcCadDocEnc(View view){
+
+        //metodo de inclusão no BD
     }
 
 

@@ -1,6 +1,7 @@
 package com.stg.achados.achadoseperdidos;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,37 +27,32 @@ public class ActivityDocPerdido extends Activity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adapter.add("Selecione o documento");
-        adapter.add("CARTÃO DE DÉBITO/CRÉDITO");
-        adapter.add("CARTÃO DO CIDADÃO - CAIXA ECONÔMICA FEDERAL");
+        adapter.add("CARTÃO DO CIDADÃO");
         adapter.add("CARTÃO NACIONAL DE SAÚDE");
-        adapter.add("O PASSE ESCOLAR OU PASSE LIVRE");
-        adapter.add("CARTEIRA DE IDENTIDADE PROFISSIONAL");
         adapter.add("CARTEIRA DO IDOSO");
-        adapter.add("CDI CERTIFICADO DISPENSA E INCORPORACAO");
         adapter.add("CERTIDÃO (NASCIMENTO/CASAMENTO)");
         adapter.add("CERTIFICADO DE RESERVISTA");
-        adapter.add("CGC/CNPJ");
+        adapter.add("CNPJ");
         adapter.add("CNH CARTEIRA NACIONAL DE HABILITACAO");
-        adapter.add("CONSELHO FEDERAL DE MEDICINA VETERINARIA");
-        adapter.add("CONSELHO REGIONAL DE BIOLOGIA  - CRB");
-        adapter.add("CONSELHO REGIONAL DE EDUCAÇÃO FÍSICA");
-        adapter.add("CONSELHO REGIONAL DE FARMÁCIA");
-        adapter.add("CPF/CIC");
+        adapter.add("CPF");
         adapter.add("CRLV E DOCUMENTOS DE VEÍCULO");
         adapter.add("CTPS");
         adapter.add("DOCUMENTO DE IDENTIFICAÇÃO INDIGENA\n");
-        adapter.add("DOCUMENTOS DE VEÍCULO\n");
         adapter.add("IDENTIDADE DE ADVOGADO\n");
         adapter.add("OUTROS");
         adapter.add("PASSAPORTE\n");
-        adapter.add("PIS - PROGRAMA INTEGRAÇÃO SOCIAL\n");
-        adapter.add("PORTE, REGISTRO E CERTIFICADO DE ARMAS\n");
         adapter.add("RG - REGISTRO GERAL\n");
         adapter.add("RNE - REGISTRO NACIONAL DE ESTRANGEIRO\n");
         adapter.add("TÍTULO DE ELEITOR\n");
 
         spinner.setAdapter(adapter);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    }
+
+
+    public void ConcCadDocEnc(View view){
+
+        //metodo de inclusão no BD
     }
 
 }
