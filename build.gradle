@@ -2,6 +2,7 @@
 
 buildscript {
     repositories {
+        maven { url 'http://ksoap2-android.googlecode.com/svn/m2-repo' }
         jcenter()
     }
     dependencies {
@@ -13,6 +14,7 @@ buildscript {
 }
 
 allprojects {
+    maven { url 'http://ksoap2-android.googlecode.com/svn/m2-repo' }
     repositories {
         jcenter()
     }
