@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('ksoap2-j2me-core-2.1.2.jar'))
