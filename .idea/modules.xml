@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProjetoAndroid2.iml" filepath="$PROJECT_DIR$/ProjetoAndroid2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ksoap2-j2me-core-2.1.2/ksoap2-j2me-core-2.1.2.iml" filepath="$PROJECT_DIR$/ksoap2-j2me-core-2.1.2/ksoap2-j2me-core-2.1.2.iml" />
     </modules>
   </component>
 </project>
