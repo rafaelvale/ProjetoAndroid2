@@ -24,6 +24,9 @@ public class ActivityTelaCadastro extends Activity {
 
    EditText edtNome;
    EditText edtCPF;
+    EditText edtEmail;
+    EditText edtSenha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,15 @@ public class ActivityTelaCadastro extends Activity {
 
         edtNome = (EditText)findViewById(R.id.edtNome);
         edtCPF = (EditText)findViewById(R.id.edtCPF);
+        edtEmail = (EditText)findViewById(R.id.edtEmail);
+        edtSenha = (EditText)findViewById(R.id.edtSenha);
 
         Thread thread = new Thread(){
             String resultado;
             @Override
             public void run(){
                 String Namespace="http://tempuri.org/";
-                String url="http://ec2-52-11-225-242.us-west-2.compute.amazonaws.com/WBS/Services/WebService_App.asmx";
+                String url="http://ec2-54-68-87-6.us-west-2.compute.amazonaws.com/WBS/Services/WebService_App.asmx";
                 String metodo="CadastrarDocumentoAchado";
                 String soap="http://tempuri.org/CadastrarDocumentoAchado";
 
@@ -55,7 +60,8 @@ public class ActivityTelaCadastro extends Activity {
                 SoapObject soapObject = new SoapObject(Namespace,metodo);
                 soapObject.addProperty("Nome", edtNome.getText().toString());
                 soapObject.addProperty("CPF", edtCPF.getText().toString());
-
+                soapObject.addProperty("Email",edtEmail.getText().toString());
+                soapObject.addProperty("Senha",edtSenha.getText().toString());
 
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
                 envelope.dotNet=true;
@@ -77,6 +83,7 @@ public class ActivityTelaCadastro extends Activity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), edtCPF.getText().toString(), Toast.LENGTH_LONG).show();
 
                     }
                 });
