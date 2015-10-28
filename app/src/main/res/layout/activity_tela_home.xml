@@ -39,7 +39,8 @@
             android:layout_weight="1"
             android:text="@string/txtAchou"
             android:textSize="25sp"
-            android:onClick="Achou"/>
+            android:onClick="Achou"
+            android:background="@drawable/round_button"/>
 
         <Button
             android:id="@+id/btnVoltarCad"
@@ -49,7 +50,8 @@
             android:layout_weight="1"
             android:text="@string/txtPerdeu"
             android:textSize="25sp"
-            android:onClick="Perdeu"/>
+            android:onClick="Perdeu"
+            android:background="@drawable/round_button"/>
 
     </LinearLayout>
 
