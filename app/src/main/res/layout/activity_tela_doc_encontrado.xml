@@ -25,7 +25,7 @@
             android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtDocEncontrado"
+            android:text="Cadastre o Documento"
             android:gravity="center"
             android:textSize="33sp"
             android:textStyle="bold"
@@ -52,12 +52,18 @@
         android:layout_height="180dp"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/editTextNumero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_NumDoc"/>
         <EditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_NomeDoc"/>
+        <EditText
             android:layout_marginTop="20dp"
-            android:id="@+id/etdDoc"
+            android:id="@+id/editTextOBS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/Hint_txtTextDeixarDoc"

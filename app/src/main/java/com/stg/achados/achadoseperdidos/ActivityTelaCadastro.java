@@ -51,10 +51,10 @@ public class ActivityTelaCadastro extends Activity {
             String resultado;
             @Override
             public void run(){
-                String Namespace="http://tempuri.org/";
-                String url="http://ec2-54-68-87-6.us-west-2.compute.amazonaws.com/WBS/Services/WebService_App.asmx";
-                String metodo="CadastrarDocumentoAchado";
-                String soap="http://tempuri.org/CadastrarDocumentoAchado";
+                String Namespace="http://STG/WEBSERVICE";
+                String url="http://achadosperdidoshomo.azurewebsites.net/WebService_App.asmx";
+                String metodo="CadastrarUsuario";
+                String soap="http://STG/WEBSERVICE/CadastrarUsuario";
 
 
                 SoapObject soapObject = new SoapObject(Namespace,metodo);

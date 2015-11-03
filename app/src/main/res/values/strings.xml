@@ -28,4 +28,5 @@
     <string name="title_activity_achou_maps">Map</string>
     <string name="Hint_txtTextDeixarDoc">Descreva onde deixará o documento</string>
     <string name="hint_NumDoc">Número do documento</string>
+    <string name="hint_NomeDoc">Nome do documento</string>
 </resources>
