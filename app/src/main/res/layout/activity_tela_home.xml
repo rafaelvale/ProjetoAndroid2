@@ -33,27 +33,31 @@
 
         <Button
             android:id="@+id/btnCadastrar"
-            android:layout_marginRight="15dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
+            android:layout_height="67dp"
             android:text="@string/txtAchou"
             android:textSize="25sp"
             android:onClick="Achou"
             android:background="@drawable/round_button"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle">
         <Button
             android:id="@+id/btnVoltarCad"
-            android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
+            android:layout_height="67dp"
             android:text="@string/txtPerdeu"
             android:textSize="25sp"
             android:onClick="Perdeu"
             android:background="@drawable/round_button"/>
+</LinearLayout>
 
-    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

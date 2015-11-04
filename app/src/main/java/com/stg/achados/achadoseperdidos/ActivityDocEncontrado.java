@@ -33,7 +33,7 @@ public class ActivityDocEncontrado extends Activity {
 
 
     public void IrParaOMapa(View view){
-        Intent intent = new Intent(this, AchouMaps.class);
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 

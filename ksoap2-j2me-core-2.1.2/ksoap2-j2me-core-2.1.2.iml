@@ -9,6 +9,7 @@
     <facet type="java-gradle" name="Java-Gradle">
       <configuration>
         <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/build" />
+        <option name="BUILDABLE" value="false" />
       </configuration>
     </facet>
   </component>
@@ -23,4 +24,3 @@
     <orderEntry type="library" exported="" name="ksoap2-j2me-core-2.1.2.ksoap2-j2me-core-2.1.2" level="project" />
   </component>
 </module>
-
