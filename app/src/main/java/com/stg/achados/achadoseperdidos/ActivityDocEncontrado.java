@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import android.widget.Button;
@@ -30,7 +31,8 @@ public class ActivityDocEncontrado extends Activity {
    EditText editTextNumero;
     EditText editTextNome;
     EditText editTextOBS;
-
+    String tipoDoc;
+    Spinner spinner;
 
     public void IrParaOMapa(View view){
         Intent intent = new Intent(this, AchouMaps.class);
@@ -44,7 +46,7 @@ public class ActivityDocEncontrado extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_doc_encontrado);
 
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+         spinner = (Spinner)findViewById(R.id.spinner);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adapter.add("Selecione o documento");
@@ -75,9 +77,13 @@ public class ActivityDocEncontrado extends Activity {
         editTextNome =(EditText)findViewById(R.id.editTextNome);
         editTextNumero =(EditText)findViewById(R.id.editTextNumero);
         editTextOBS =(EditText)findViewById(R.id.editTextOBS);
+
+
     }
 
     public void ConcCadDocEnc(View view){
+
+        tipoDoc = spinner.getSelectedItem().toString();
 
         Thread thread = new Thread(){
             String resultado;
@@ -94,7 +100,7 @@ public class ActivityDocEncontrado extends Activity {
                 soapObject.addProperty("NumeroDocumento", editTextNumero.getText().toString());
                 //soapObject.addProperty("NumeroDocumentoAlternativo",.getText().toString());
                 soapObject.addProperty("Nome",editTextNome.getText().toString());
-                soapObject.addProperty("Tipo","AD");
+                soapObject.addProperty("Tipo",tipoDoc);
 
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
                 envelope.dotNet=true;
