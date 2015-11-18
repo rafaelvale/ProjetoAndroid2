@@ -55,13 +55,7 @@
             android:id="@+id/edtCPF"
             android:hint="@string/hint_cpf"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/edtNasc"
-            android:hint="@string/hint_dt_nasc"/>
+
 
         <EditText
             android:layout_width="match_parent"
