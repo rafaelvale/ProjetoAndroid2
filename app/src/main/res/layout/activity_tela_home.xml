@@ -57,19 +57,12 @@
             android:background="@drawable/round_button"/>
 </LinearLayout>
 
-
-
-    <LinearLayout
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/txtRodape"
-            android:layout_marginTop="100dp"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtRodape"
-            android:textStyle="bold"
-            android:textColor="#000080"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/btnSair"
+        android:text="Logout Usuário"/>
+
+
 </LinearLayout>

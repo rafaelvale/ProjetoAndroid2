@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import org.ksoap2.SoapEnvelope;
@@ -25,13 +26,38 @@ public class ActivityTelaCadastro extends Activity {
    EditText edtNome;
    EditText edtCPF;
     EditText edtEmail;
+    EditText edtConfEmail;
     EditText edtSenha;
+    EditText edtConfSenha;
+    Button btnCadastrar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
+
+        edtNome = (EditText)findViewById(R.id.edtNome);
+        edtCPF = (EditText)findViewById(R.id.edtCPF);
+        edtEmail = (EditText)findViewById(R.id.edtEmail);
+        edtConfEmail = (EditText)findViewById(R.id.edtConfEmail);
+        edtSenha = (EditText)findViewById(R.id.edtSenha);
+        edtConfSenha = (EditText)findViewById(R.id.edtConfSenha);
+        btnCadastrar = (Button)findViewById(R.id.btnCadastrar);
+
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(edtNome.getText().length()==0 || edtCPF.getText().length()==0 ||
+                        edtEmail.getText().length()==0 || edtConfEmail.getText().length()==0 || edtConfSenha.getText().length()==0
+                        || edtSenha.getText().length()==0){
+
+                    Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
     }
 
     public void VoltarCad(View view){
