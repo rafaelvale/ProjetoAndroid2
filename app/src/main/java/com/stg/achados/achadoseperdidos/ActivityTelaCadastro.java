@@ -45,17 +45,6 @@ public class ActivityTelaCadastro extends Activity {
         edtConfSenha = (EditText)findViewById(R.id.edtConfSenha);
         btnCadastrar = (Button)findViewById(R.id.btnCadastrar);
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(edtNome.getText().length()==0 || edtCPF.getText().length()==0 ||
-                        edtEmail.getText().length()==0 || edtConfEmail.getText().length()==0 || edtConfSenha.getText().length()==0
-                        || edtSenha.getText().length()==0){
-
-                    Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
 
     }
@@ -73,12 +62,19 @@ public class ActivityTelaCadastro extends Activity {
         edtEmail = (EditText)findViewById(R.id.edtEmail);
         edtSenha = (EditText)findViewById(R.id.edtSenha);
 
+        if(edtNome.getText().length()==0 || edtCPF.getText().length()==0 ||
+                edtEmail.getText().length()==0 || edtConfEmail.getText().length()==0 || edtConfSenha.getText().length()==0
+                || edtSenha.getText().length()==0){
+
+            Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_LONG).show();
+        }
+
         Thread thread = new Thread(){
             String resultado;
             @Override
             public void run(){
                 String Namespace="http://STG/WEBSERVICE";
-                String url="http://achadosperdidoshomo.azurewebsites.net/WebService_App.asmx";
+                String url="http://webservicestg.azurewebsites.net/WebService_App.asmx";
                 String metodo="CadastrarUsuario";
                 String soap="http://STG/WEBSERVICE/CadastrarUsuario";
 

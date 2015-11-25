@@ -6,6 +6,7 @@ package com.stg.achados.achadoseperdidos;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.EditText;
+        import android.widget.Toast;
 
         import com.google.android.gms.maps.CameraUpdateFactory;
         import com.google.android.gms.maps.GoogleMap;
@@ -66,6 +67,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 
+                    Toast.makeText(getApplication(),latLng.toString(),Toast.LENGTH_LONG).show();
+
 
 
                 }
@@ -87,8 +90,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             private void setUpMap(){
 
                 mMap.setMyLocationEnabled(true);
-
-
-
             }
 }

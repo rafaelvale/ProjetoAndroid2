@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class ActivityLogin extends Activity{
 
 
-    EditText edtNome;
+    EditText edtCpf;
     EditText edtSenha;
     Button btnCadastrar;
     //variavel para validar os dados do formulario
@@ -26,7 +26,7 @@ public class ActivityLogin extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-        edtNome = (EditText)findViewById(R.id.edtNome);
+        edtCpf = (EditText)findViewById(R.id.edtCPF);
         edtSenha = (EditText)findViewById(R.id.edtSenha);
         btnCadastrar = (Button)findViewById(R.id.btnCadastrar);
 
@@ -37,15 +37,15 @@ public class ActivityLogin extends Activity{
 
                 camposValidados = true;
 
-                if(edtNome.getText().length()==0 || edtSenha.getText().length()==0){
+                if(edtCpf.getText().length()==0 || edtSenha.getText().length()==0){
                     Toast.makeText(getApplication(),"Favor informar usuário e senha",Toast.LENGTH_LONG).show();
 
                     camposValidados = false;
                 }else{
 
-                    Toast.makeText(getApplication(),"Seja Bem Vindo "+edtNome.getText().toString()+"!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication(),"Seja Bem Vindo "+edtCpf.getText().toString()+"!",Toast.LENGTH_LONG).show();
 
-                    edtNome.setText("");
+                    edtCpf.setText("");
                     edtSenha.setText("");
 
                     Intent intent = new Intent(ActivityLogin.this, ActivityHome.class);

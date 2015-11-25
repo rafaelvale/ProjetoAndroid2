@@ -90,7 +90,7 @@ public class ActivityDocEncontrado extends Activity {
             @Override
             public void run(){
                 String Namespace="http://STG/WEBSERVICE";
-                String url="http://achadosperdidoshomo.azurewebsites.net/WebService_App.asmx";
+                String url="http://webservicestg.azurewebsites.net/WebService_App.asmx";
                 String metodo="CadastrarDocumento";
                 String soap="http://STG/WEBSERVICE/CadastrarDocumento";
 

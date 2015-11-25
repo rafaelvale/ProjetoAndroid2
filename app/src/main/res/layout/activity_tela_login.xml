@@ -33,10 +33,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:ems="10"
-            android:id="@+id/edtNome"
-            android:hint="@string/hint_user" />
+            android:id="@+id/edtCPF"
+            android:hint="@string/hint_cpf" />
 
         <EditText
             android:layout_width="match_parent"
