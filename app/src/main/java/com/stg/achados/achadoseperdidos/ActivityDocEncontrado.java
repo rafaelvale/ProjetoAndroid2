@@ -85,54 +85,64 @@ public class ActivityDocEncontrado extends Activity {
 
         tipoDoc = spinner.getSelectedItem().toString();
 
-        Thread thread = new Thread(){
-            String resultado;
-            @Override
-            public void run(){
-                String Namespace="http://STG/WEBSERVICE";
-                String url="http://webservicestg.azurewebsites.net/WebService_App.asmx";
-                String metodo="CadastrarDocumento";
-                String soap="http://STG/WEBSERVICE/CadastrarDocumento";
+        if(spinner.getSelectedItem().toString().length()==0 || editTextNome.getText().length()==0
+                || editTextNumero.getText().length()==0 || editTextOBS.getText().length()==0){
+
+            Toast.makeText(getApplication(),"Preencher todos os campos..",Toast.LENGTH_SHORT).show();
+
+        }else {
+
+            Thread thread = new Thread() {
+                String resultado;
+
+                @Override
+                public void run() {
+                    String Namespace = "http://STG/WEBSERVICE";
+                    String url = "http://webservicestg.azurewebsites.net/WebService_App.asmx";
+                    String metodo = "CadastrarDocumento";
+                    String soap = "http://STG/WEBSERVICE/CadastrarDocumento\n";
 
 
-                SoapObject soapObject = new SoapObject(Namespace,metodo);
-                soapObject.addProperty("Descricao",editTextOBS.getText().toString());
-                soapObject.addProperty("NumeroDocumento", editTextNumero.getText().toString());
-                //soapObject.addProperty("NumeroDocumentoAlternativo",.getText().toString());
-                soapObject.addProperty("Nome",editTextNome.getText().toString());
-                soapObject.addProperty("Tipo",tipoDoc);
+                    SoapObject soapObject = new SoapObject(Namespace, metodo);
+                    soapObject.addProperty("Descricao", editTextOBS.getText().toString());
+                    soapObject.addProperty("NumeroDocumento", editTextNumero.getText().toString());
+                    //soapObject.addProperty("NumeroDocumentoAlternativo",.getText().toString());
+                    soapObject.addProperty("Nome", editTextNome.getText().toString());
+                    soapObject.addProperty("Tipo", tipoDoc);
 
-                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-                envelope.dotNet=true;
+                    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+                    envelope.dotNet = true;
 
-                envelope.setOutputSoapObject(soapObject);
+                    envelope.setOutputSoapObject(soapObject);
 
-                HttpTransportSE transportSE = new HttpTransportSE(url);
-                try {
-                    transportSE.call(soap,envelope);
-                    SoapPrimitive res = (SoapPrimitive) envelope.getResponse();
-                    resultado = res.toString();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
+                    HttpTransportSE transportSE = new HttpTransportSE(url);
+                    try {
+                        transportSE.call(soap, envelope);
+                        SoapPrimitive res = (SoapPrimitive) envelope.getResponse();
+                        resultado = res.toString();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    });
                 }
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+
+            };
 
 
-                    }
-                });
-            }
+            thread.start();
 
-        };
-
-        thread.start();
-
-
+        }
     }
 
 

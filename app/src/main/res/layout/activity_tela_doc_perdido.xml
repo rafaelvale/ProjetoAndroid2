@@ -49,8 +49,10 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/tipoDoc">
         <EditText
+            android:id="@+id/editTextNumero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_NumDoc"/>
@@ -67,8 +69,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/txt_cadastrar"
-            android:onClick="ConcCadDocEnc"/>
+            android:text="Pesquisar"
+            android:onClick="Pesquisa"/>
     </LinearLayout>
 
 

@@ -37,15 +37,9 @@ public class ActivityTelaCadastro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
 
-        edtNome = (EditText)findViewById(R.id.edtNome);
-        edtCPF = (EditText)findViewById(R.id.edtCPF);
-        edtEmail = (EditText)findViewById(R.id.edtEmail);
         edtConfEmail = (EditText)findViewById(R.id.edtConfEmail);
-        edtSenha = (EditText)findViewById(R.id.edtSenha);
         edtConfSenha = (EditText)findViewById(R.id.edtConfSenha);
         btnCadastrar = (Button)findViewById(R.id.btnCadastrar);
-
-
 
     }
 
@@ -66,7 +60,7 @@ public class ActivityTelaCadastro extends Activity {
                 edtEmail.getText().length()==0 || edtConfEmail.getText().length()==0 || edtConfSenha.getText().length()==0
                 || edtSenha.getText().length()==0){
 
-            Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_SHORT).show();
         }
 
         Thread thread = new Thread(){
@@ -104,8 +98,8 @@ public class ActivityTelaCadastro extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), edtCPF.getText().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),resultado, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"CPF "+ edtCPF.getText().toString(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -114,6 +108,9 @@ public class ActivityTelaCadastro extends Activity {
         };
 
         thread.start();
+
+        Intent intent = new Intent(this, ActivityLogin.class);
+        startActivity(intent);
     }
 
 }

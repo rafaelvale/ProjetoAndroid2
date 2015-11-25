@@ -69,8 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     Toast.makeText(getApplication(),latLng.toString(),Toast.LENGTH_LONG).show();
 
-
-
                 }
 
             }
