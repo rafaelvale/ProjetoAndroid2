@@ -64,6 +64,10 @@ public class ActivityHome extends Activity {
 
     }
 
+    public void onBackPressed()  {
+
+    }
+
     public void Achou(View view){
         Intent intent = new Intent(this, ActivityDocEncontrado.class);
         startActivity(intent);

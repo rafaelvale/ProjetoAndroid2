@@ -43,6 +43,10 @@ public class ActivityTelaCadastro extends Activity {
 
     }
 
+    public void onBackPressed()  {
+
+    }
+
     public void VoltarCad(View view){
 
         Intent intent = new Intent(this,ActivityLogin.class);
