@@ -52,69 +52,110 @@ public class ActivityTelaCadastro extends Activity {
         Intent intent = new Intent(this,ActivityLogin.class);
         startActivity(intent);
     }
+    private boolean validarCampos(String cpf, String senha, String nome, String email,
+                                  String confEmail, String confSenha){
+        boolean resultado = true;
+        if(cpf == null || "".equals(cpf) || cpf.length() < 11 || cpf.length() > 11){
+
+            edtCPF.setError("Campo Obrigatório, CPF inválido!");
+
+            resultado = false;
+
+        }        if(senha == null || "".equals(senha)){
+            edtSenha.setError("Campo Obrigatório!");
+
+            resultado =  false;
+        }
+        if(confSenha.toString() != senha.toString()){
+            edtConfSenha.setError("Campo senha não confere!");
+        }
+
+        if(nome == null || "".equals(nome)){
+            edtNome.setError("Campo Obrigatório!");
+        }
+        if (email == null || "".equals(email)){
+            edtEmail.setError("Campo Obrigatório!");
+        }
+        if(confEmail.toString() != email.toString()){
+            edtConfEmail.setError(("Campo Email não confere"));
+        }
+
+
+        return resultado;
+    }
+
 
     public void Cadastrar(View view) {
 
-        edtNome = (EditText)findViewById(R.id.edtNome);
-        edtCPF = (EditText)findViewById(R.id.edtCPF);
-        edtEmail = (EditText)findViewById(R.id.edtEmail);
-        edtSenha = (EditText)findViewById(R.id.edtSenha);
-
-        if(edtNome.getText().length()==0 || edtCPF.getText().length()==0 ||
-                edtEmail.getText().length()==0 || edtConfEmail.getText().length()==0 || edtConfSenha.getText().length()==0
-                || edtSenha.getText().length()==0){
-
-            Toast.makeText(getApplication(),"Favor informar todos os campos",Toast.LENGTH_SHORT).show();
-        }
-
-        Thread thread = new Thread(){
-            String resultado;
-            @Override
-            public void run(){
-                String Namespace="http://STG/WEBSERVICE";
-                String url="http://webservicestg.azurewebsites.net/WebService_App.asmx";
-                String metodo="CadastrarUsuario";
-                String soap="http://STG/WEBSERVICE/CadastrarUsuario";
+        edtNome = (EditText) findViewById(R.id.edtNome);
+        edtCPF = (EditText) findViewById(R.id.edtCPF);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtSenha = (EditText) findViewById(R.id.edtSenha);
 
 
-                SoapObject soapObject = new SoapObject(Namespace,metodo);
-                soapObject.addProperty("Nome", edtNome.getText().toString());
-                soapObject.addProperty("CPF", edtCPF.getText().toString());
-                soapObject.addProperty("Email",edtEmail.getText().toString());
-                soapObject.addProperty("Senha",edtSenha.getText().toString());
+        String cpf = edtCPF.getText().toString();
+        String senha = edtSenha.getText().toString();
+        String email = edtEmail.getText().toString();
+        String nome = edtNome.getText().toString();
+        String confEmail = edtConfEmail.getText().toString();
+        String confSenha = edtConfSenha.getText().toString();
 
-                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-                envelope.dotNet=true;
+        boolean isValido = validarCampos(cpf, senha, email, nome, confEmail, confSenha);
+        if (!isValido) {
 
-                envelope.setOutputSoapObject(soapObject);
+            Toast.makeText(getApplication(), "Favor preencher todos os campos", Toast.LENGTH_SHORT).show();
+        } else {
 
-                HttpTransportSE transportSE = new HttpTransportSE(url);
-                try {
-                    transportSE.call(soap,envelope);
-                    SoapPrimitive res = (SoapPrimitive) envelope.getResponse();
-                    resultado = res.toString();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
+            Thread thread = new Thread() {
+                String resultado;
+
+                @Override
+                public void run() {
+                    String Namespace = "http://STG/WEBSERVICE";
+                    String url = "http://webservicestg.azurewebsites.net/WebService_App.asmx";
+                    String metodo = "CadastrarUsuario";
+                    String soap = "http://STG/WEBSERVICE/CadastrarUsuario";
+
+
+                    SoapObject soapObject = new SoapObject(Namespace, metodo);
+                    soapObject.addProperty("Nome", edtNome.getText().toString());
+                    soapObject.addProperty("CPF", edtCPF.getText().toString());
+                    soapObject.addProperty("Email", edtEmail.getText().toString());
+                    soapObject.addProperty("Senha", edtSenha.getText().toString());
+
+                    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+                    envelope.dotNet = true;
+
+                    envelope.setOutputSoapObject(soapObject);
+
+                    HttpTransportSE transportSE = new HttpTransportSE(url);
+                    try {
+                        transportSE.call(soap, envelope);
+                        SoapPrimitive res = (SoapPrimitive) envelope.getResponse();
+                        resultado = res.toString();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "CPF " + edtCPF.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                 }
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(),resultado, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),"CPF "+ edtCPF.getText().toString(), Toast.LENGTH_SHORT).show();
+            };
 
-                    }
-                });
-            }
+            thread.start();
 
-        };
-
-        thread.start();
-
-        Intent intent = new Intent(this, ActivityLogin.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, ActivityLogin.class);
+            startActivity(intent);
+        }
     }
 
 }

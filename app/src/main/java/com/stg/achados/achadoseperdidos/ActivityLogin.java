@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.kobjects.util.Util;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
@@ -43,13 +44,15 @@ public class ActivityLogin extends Activity{
 
     }
 
-    public void Acessar(View view){
+    public void Acessar(View view) {
 
-        if(edtCPF.getText().length()==0 || edtSenha.getText().length()==0){
-            Toast.makeText(getApplication(),"Favor informar CPF e senha",Toast.LENGTH_SHORT).show();
+        String cpf = edtCPF.getText().toString();
+        String senha = edtSenha.getText().toString();
 
-
-        }else {
+        boolean isValido = validarCampos(cpf, senha);
+        if (!isValido) {
+            Toast.makeText(getApplication(), "Favor preencher todos os campos", Toast.LENGTH_SHORT).show();
+        } else {
 
             Thread thread = new Thread() {
                 String resultado;
@@ -63,7 +66,7 @@ public class ActivityLogin extends Activity{
 
 
                     SoapObject soapObject = new SoapObject(Namespace, metodo);
-               //     soapObject.addProperty("Nome", edtNome.getText().toString());
+                    //     soapObject.addProperty("Nome", edtNome.getText().toString());
                     soapObject.addProperty("cpf", edtCPF.getText().toString());
                     soapObject.addProperty("senha", edtSenha.getText().toString());
 
@@ -82,7 +85,6 @@ public class ActivityLogin extends Activity{
                     } catch (XmlPullParserException e) {
                         e.printStackTrace();
                     }
-
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -100,6 +102,26 @@ public class ActivityLogin extends Activity{
             startActivity(intent);
         }
     }
+
+    private boolean validarCampos(String cpf, String senha){
+        boolean resultado = true;
+        if(cpf == null || "".equals(cpf) || cpf.length() < 11 || cpf.length() > 11){
+
+            edtCPF.setError("Campo Obrigatório, CPF inválido!");
+
+            resultado = false;
+
+        }
+        if(senha == null || "".equals(senha)){
+            edtSenha.setError("Campo Obrigatório!");
+
+            resultado =  false;
+        }
+
+        return resultado;
+    }
+
+
 
 
 
